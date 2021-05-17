@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             webViewClient = MyWebViewClient(applicationContext, binding.progressBar, binding.errorAnim)
         }
+
+        with(binding.viewPager){
+            adapter = MyViewPagerAdapter()
+        }
+
     }
 
     override fun onBackPressed() {
