@@ -15,24 +15,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with(binding.webview){
-            loadUrl("https://remoteworker.id/blog/blog-1")
-            settings.javaScriptEnabled = true
-            settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
-            webViewClient = MyWebViewClient(applicationContext, binding.progressBar, binding.errorAnim)
-        }
 
         with(binding.viewPager){
-            adapter = MyViewPagerAdapter()
+            adapter = MyViewPagerAdapter(this@MainActivity)
         }
 
     }
 
-    override fun onBackPressed() {
-        if (binding.webview.canGoBack()){
-            binding.webview.goBack()
-        } else {
-            super.onBackPressed()
-        }
-    }
+//    override fun onBackPressed() {
+//        if (binding.webview.canGoBack()){
+//            binding.webview.goBack()
+//        } else {
+//            super.onBackPressed()
+//        }
+//    }
 }
