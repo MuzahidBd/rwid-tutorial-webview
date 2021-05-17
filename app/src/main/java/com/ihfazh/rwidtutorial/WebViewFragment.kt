@@ -11,7 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.ihfazh.rwidtutorial.databinding.FragmentWebviewBinding
 
-class WebViewFragment: Fragment() {
+class WebViewFragment(private val webViewUrl: String): Fragment() {
     private lateinit var binding: FragmentWebviewBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -24,7 +24,7 @@ class WebViewFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding.webview){
-            loadUrl("https://remoteworker.id/blog/blog-1")
+            loadUrl(webViewUrl)
             settings.javaScriptEnabled = true
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             webViewClient = MyWebViewClient(requireActivity().applicationContext, binding.progressBar, binding.errorAnim)

@@ -10,7 +10,9 @@ class MyViewPagerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa){
     }
 
     override fun createFragment(position: Int): Fragment {
-        return WebViewFragment()
+        return when(position) {
+            0 -> WebViewFragment("https://remoteworker.id/blog/blog-1?affid=47ZY8rGf")
+            else -> WebViewFragment("https://remoteworker.id/promo?affid=47ZY8rGf")
+        }
     }
-
 }
