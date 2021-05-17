@@ -7,6 +7,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.ihfazh.rwidtutorial.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,24 @@ class MainActivity : AppCompatActivity() {
         with(binding.viewPager){
             adapter = MyViewPagerAdapter(this@MainActivity)
             reduceDragSensitivity()
+
         }
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager){
+            tab, position ->
+            run {
+                when (position) {
+                    0 -> {
+                        tab.text = "Blog"
+                    }
+                    else -> {
+                        tab.text = "Promo"
+                    }
+                }
+            }
+        }.attach()
+
+
 
     }
 
