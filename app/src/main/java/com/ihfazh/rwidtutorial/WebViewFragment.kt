@@ -30,4 +30,12 @@ class WebViewFragment(private val webViewUrl: String): Fragment() {
             webViewClient = MyWebViewClient(requireActivity().applicationContext, binding.progressBar, binding.errorAnim)
         }
     }
+
+    fun canGoBack(): Boolean {
+        return binding.webview.canGoBack()
+    }
+
+    fun goBack(){
+        binding.webview.goBack()
+    }
 }

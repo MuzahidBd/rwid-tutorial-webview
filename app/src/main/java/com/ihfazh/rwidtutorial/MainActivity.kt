@@ -43,13 +43,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    override fun onBackPressed() {
-//        if (binding.webview.canGoBack()){
-//            binding.webview.goBack()
-//        } else {
-//            super.onBackPressed()
-//        }
-//    }
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.fragments[binding.viewPager.currentItem]
+        if (currentFragment is WebViewFragment){
+            if (currentFragment.canGoBack()){
+                currentFragment.goBack()
+            } else {
+                super.onBackPressed()
+            }
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
 
 fun ViewPager2.reduceDragSensitivity() {
